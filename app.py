@@ -1,10 +1,9 @@
 import dash
 import dash_auth
-import dash_core_components as dcc
+from dash import dcc
 import dash_html_components as html
 import plotly
 import plotly.graph_objects as go
-import numpy as np
 
 
 # Keep this out of source code repository - save in a file or a database
@@ -42,7 +41,7 @@ app.layout = html.Div([
     #dash.dependencies.Output('graph-title', 'children'),
     [dash.dependencies.Input('dropdown', 'value')])
 def update_graph(dropdown_value):
-    x = np.linspace(-5,5,100)
+    x = [x * 0.01 for x in range(0, 100)]
     y = [(x**dropdown_value) for x in x]
 
     mu, sigma = 0, 0.1 # mean and standard deviation
