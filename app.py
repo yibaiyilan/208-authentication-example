@@ -38,7 +38,7 @@ app.layout = html.Div([
 ], className='container')
 
 @app.callback(
-    dash.dependencies.Output('graph', 'figure'),
+    #dash.dependencies.Output('graph', 'figure'),
     dash.dependencies.Output('graph-title', 'children'),
     [dash.dependencies.Input('dropdown', 'value')])
 def update_graph(dropdown_value):
@@ -49,6 +49,7 @@ def update_graph(dropdown_value):
 
     # Build figure
     fig = go.Figure()
+    #graph_title='Graph of {}'.format(str(dropdown_value))
     # Add scatter trace with medium sized markers
     fig.add_trace(
         go.Scatter(
@@ -71,10 +72,11 @@ def update_graph(dropdown_value):
     fig.update_layout(
         margin=dict(l=20, r=20, t=20, b=20),
         paper_bgcolor="LightSteelBlue",
+        title = graph_title
     )
     fig.update_layout(width=400,height=400)
 
-    return fig
+    return fig #graph_title, 
 
 ############ Deploy
 if __name__ == '__main__':
