@@ -38,8 +38,8 @@ app.layout = html.Div([
 ], className='container')
 
 @app.callback(
-    #dash.dependencies.Output('graph', 'figure'),
-    dash.dependencies.Output('graph-title', 'children'),
+    dash.dependencies.Output('graph', 'figure'),
+    #dash.dependencies.Output('graph-title', 'children'),
     [dash.dependencies.Input('dropdown', 'value')])
 def update_graph(dropdown_value):
     x = np.linspace(-5,5,100)
