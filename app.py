@@ -41,7 +41,7 @@ app.layout = html.Div([
     [dash.dependencies.Input('dropdown', 'value')])
 def update_graph(dropdown_value):
     x = np.linspace(-5,5,100)
-    y = x**
+    y = [(x**dropdown_value) for x in x_values]
 
     mu, sigma = 0, 0.1 # mean and standard deviation
 
