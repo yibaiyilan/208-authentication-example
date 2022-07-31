@@ -21,7 +21,7 @@ auth = dash_auth.BasicAuth(
 )
 
 app.layout = html.Div([
-    html.H1('Welcome to the Magic World),
+    html.H1('Welcome to the Magic World'),
     html.H3('You are successfully authorized'),
     dcc.Dropdown(
         id='dropdown',
@@ -37,6 +37,7 @@ app.layout = html.Div([
 
 @app.callback(
     dash.dependencies.Output('graph', 'figure'),
+    dash.dependencies.Output('graph-title', 'children'),
     [dash.dependencies.Input('dropdown', 'value')])
 def update_graph(dropdown_value):
     x = np.linspace(-5,5,100)
