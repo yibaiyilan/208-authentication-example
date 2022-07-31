@@ -41,26 +41,27 @@ app.layout = html.Div([
     dash.dependencies.Output('graph-title', 'children'),
     [dash.dependencies.Input('dropdown', 'value')])
 def update_graph(dropdown_value):
-    x = [x * 0.01 for x in range(0, 100)]
+    x = [x * 0.01 for x in range(-100, 100)]
     y = [(x**dropdown_value) for x in x]
 
     mu, sigma = 0, 0.1 # mean and standard deviation
 
     # Build figure
     fig = go.Figure()
-    graph_title='Graph of {}'.format(str(dropdown_value))
+    #graph_title='Graph of {}'.format(str(dropdown_value))
     # Add scatter trace with medium sized markers
     fig.add_trace(
         go.Scatter(
             mode='markers',
             x=x,
             y=y,
+            marker_symbol='star',
             marker=dict(
-                color='LightSkyBlue',
+                color='yellow',
                 size=20,
                 opacity=0.5,
                 line=dict(
-                    color='MediumPurple',
+                    color='orange',
                     width=2
                 )
             ),
@@ -70,8 +71,7 @@ def update_graph(dropdown_value):
 
     fig.update_layout(
         margin=dict(l=20, r=20, t=20, b=20),
-        paper_bgcolor="LightSteelBlue",
-        title = graph_title
+        paper_bgcolor="LightSteelBlue"
     )
     fig.update_layout(width=400,height=400)
 
